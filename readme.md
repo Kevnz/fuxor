@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/Kevnz/fuxor.png?branch=master)](https://travis-ci.org/Kevnz/fuxor)
 # Fuxor
 
 Very simple DI for node.
