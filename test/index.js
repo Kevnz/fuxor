@@ -20,7 +20,7 @@ test("Requiring overrides", function (t) {
 test("Requiring overrides multiple times", function (t) { 
 	
 	var fs = require('fs');
-	var mocking = require('../mockloader');
+	var mocking = require('../index');
 	mocking.add({name:'fs', result: {
 		test: function (result) {
 			t.ok(result, 'this should be called' );
@@ -42,7 +42,7 @@ test("Requiring overrides multiple times", function (t) {
 
 test("Removing a module", function (t) { 
 	
-	var mocking = require('../mockloader');
+	var mocking = require('../index');
 	mocking.add({name:'fs', result: {
 		mockFunction: function (result) {
 			t.ok(result, 'this should be called' );
