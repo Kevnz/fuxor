@@ -2,9 +2,9 @@
   "name": "fuxor",
   "version": "1.0.0",
   "description": "DI by overriding require",
-  "main": "index.js",
+  "main": "mockloader",
   "scripts": {
-    "test": "NODE_ENV=test tap ./tests/index.js"
+    "test": "NODE_ENV=test tap ./test/index.js"
   },
   "author": "Kevin Isom<kevin.isom@gmail.com>",
   "license": "The Unlicense",
