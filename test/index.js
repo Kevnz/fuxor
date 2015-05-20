@@ -1,10 +1,11 @@
 var test = require("tap").test;
 
-
-test("Requiring overrides", function (t) { 
+var mocking = require('../index');
 	
+test("Requiring overrides", function (t) { 
+	mocking.clear();
 	var fs = require('fs');
-	var mocking = require('../mockloader');
+
 	mocking.add({name:'fs', result: {
 		test: function (result) {
 			t.ok(result, 'this should be called' );
@@ -14,13 +15,13 @@ test("Requiring overrides", function (t) {
 	var fs2 = require('fs'); 
 	t.notEqual(fs , fs2, "should not be the same");
 	fs2.test(true);
-	 
+	
 });
 
 test("Requiring overrides multiple times", function (t) { 
-	
+	mocking.clear();
 	var fs = require('fs');
-	var mocking = require('../index');
+	 
 	mocking.add({name:'fs', result: {
 		test: function (result) {
 			t.ok(result, 'this should be called' );
@@ -42,7 +43,7 @@ test("Requiring overrides multiple times", function (t) {
 
 test("Removing a module", function (t) { 
 	
-	var mocking = require('../index');
+	mocking.clear();
 	mocking.add({name:'fs', result: {
 		mockFunction: function (result) {
 			t.ok(result, 'this should be called' );

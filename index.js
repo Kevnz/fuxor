@@ -24,5 +24,11 @@ module.exports = {
     remove: function (name) {
         mappings[name] = null;
         delete mappings[name];
+    },
+    reset: function () {
+        Module._load = _defaultLoad;
+    },
+    clear: function () {
+        mappings =  {};
     }
 }
