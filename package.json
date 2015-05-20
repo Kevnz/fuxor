@@ -2,9 +2,22 @@
   "name": "fuxor",
   "version": "1.0.0",
   "description": "DI by overriding require",
-  "main": "mockloader",
+  "main": "index.js",
+  "keywords": [
+    "di",
+    "dependency inject",
+    "ioc",
+    "test",
+    "testing",
+    "mocking",
+    "overloading"
+  ],
   "scripts": {
     "test": "NODE_ENV=test tap ./test/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/Kevnz/fuxor"
   },
   "author": "Kevin Isom<kevin.isom@gmail.com>",
   "license": "The Unlicense",
