@@ -1,7 +1,7 @@
 {
   "name": "fuxor",
-  "version": "1.0.0",
-  "description": "DI by overriding require",
+  "version": "1.0.1",
+  "description": "Simple dependency injection by overriding require",
   "main": "index.js",
   "keywords": [
     "di",
