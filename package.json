@@ -6,6 +6,9 @@
   "keywords": [
     "di",
     "dependency inject",
+    "dependency injection",
+    "namespacing",
+    "namespace",
     "ioc",
     "test",
     "testing",
