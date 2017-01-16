@@ -122,6 +122,21 @@ test('Local module not added should be called', function (t) {
 
 });
 
+test('Adding by string (key) and result', function (t) {
+  fuxor.clear();
+  const fs = require('fs');
+
+  fuxor.add('fs', {
+    test: function (result) {
+      t.ok(result, 'this should be called' );
+      t.end();
+    }
+  });
+  const fs2 = require('fs');
+  t.notEqual(fs , fs2, 'should not be the same');
+  fs2.test(true);
+
+});
 test('Adding multiple overrides in one add', function (t) {
   fuxor.clear();
   fuxor.add([{ name:'fs', result: {
