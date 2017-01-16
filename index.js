@@ -17,9 +17,11 @@ Module._load = function(moduleName, module) {
 };
 
 module.exports = {
-  add: function (mapping) {
+  add: function (mapping, result) {
     if (Array.isArray(mapping)) {
       mapping.forEach(map => mappings.set(map.name, map.result));
+    } else if (typeof mapping === 'string') {
+      mappings.set(mapping, result);
     } else {
       mappings.set(mapping.name, mapping.result);
     }
