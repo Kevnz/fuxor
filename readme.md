@@ -20,11 +20,17 @@ console.log(fs.readFileSync('not really', 'anything', { whatever:'you want'}));/
 ```
 const fuxor = require('fuxor');
 // Add one entry to be overridden 
-fuxor.add({ name: 'fs', result: {
+fuxor.add('fs', {
   readFileSync: function () {
     return 'Not really a file';
   }
 });
+// Add one entry to be overridden 
+fuxor.add({ name: 'fs', result: {
+  readFileSync: function () {
+    return 'Not really a file';
+  }
+}});
 // Add multiple entries at once
 fuxor.add([{ name: 'fs', result: {
   readFileSync: function () {
