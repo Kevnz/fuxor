@@ -1,11 +1,14 @@
 {
   "name": "fuxor",
-  "version": "2.1.0",
+  "version": "3.0.0",
   "description": "Simple dependency injection by overriding require",
   "main": "index.js",
   "keywords": [
     "di",
     "dependency inject",
+    "dependency injection",
+    "namespacing",
+    "namespace",
     "ioc",
     "test",
     "testing",

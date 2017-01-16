@@ -155,3 +155,16 @@ test('Adding multiple overrides in one add', function (t) {
   nothing(true);
   t.end();
 });
+
+test('Add folder to namespace', function (t) {
+  fuxor.clear();
+  fuxor.namespace('app', './test/app');
+  const app = require('app::sample');
+  const nested = require('app::nested');
+  const example = require('app::nested/example');
+
+  t.ok(app() === true, 'method should return');
+  t.ok(nested() === false, 'module should be the correct one');
+  t.ok(example() === 'example', 'method should return');
+  t.end();
+});
