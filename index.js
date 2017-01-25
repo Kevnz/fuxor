@@ -13,7 +13,7 @@ Module._load = function(moduleName, module) {
   if (mappings.has(moduleName)) {
     return mappings.get(moduleName);
   }
-  return defaultLoad(moduleName);
+  return defaultLoad(moduleName, module);
 };
 
 module.exports = {
