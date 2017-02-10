@@ -1,3 +1,4 @@
+'use strict';
 const Module = require('module');
 
 const defaultLoad = Module._load;
