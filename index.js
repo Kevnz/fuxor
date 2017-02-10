@@ -1,9 +1,15 @@
+'use strict';
 const Module = require('module');
 
 const defaultLoad = Module._load;
 const mappings =  new Map();
+let wrapper;
 
 Module._load = function(moduleName, module) {
+  if (wrapper) {
+    const loadedModule = defaultLoad(moduleName, module);
+    return wrapper(loadedModule);
+  }
   if (moduleName.indexOf('.') === 0 && !mappings.has(moduleName)) {
     const path = defaultLoad('path');
     const parsedPath = path.parse(module.filename);
@@ -28,11 +34,15 @@ module.exports = {
   },
   clear: function () {
     mappings.clear();
+    wrapper = null;
   },
   remove: function (name) {
     mappings.delete(name);
   },
   reset: function () {
     Module._load = defaultLoad;
+  },
+  wrap: function(wrapFunction) {
+    wrapper = wrapFunction;
   }
 }
