@@ -155,3 +155,24 @@ test('Adding multiple overrides in one add', function (t) {
   nothing(true);
   t.end();
 });
+
+test('wrap a module', (t) => {
+  fuxor.clear();
+  fuxor.wrap((module) => {
+    t.ok(module, 'this should be called' );
+    t.end();
+  });
+  const wrappedResult = require('util');
+  console.log(wrappedResult);
+});
+
+test('wrap multiple modules', (t) => {
+  t.plan(2)
+  fuxor.clear();
+  fuxor.wrap((module) => {
+    t.ok(module, 'this should be called' );
+  });
+  const wrappedResult = require('util');
+  const wrappedFS = require('fs');
+  t.end();
+});
