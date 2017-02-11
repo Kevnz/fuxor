@@ -163,7 +163,6 @@ test('wrap a module', (t) => {
     t.end();
   });
   const wrappedResult = require('util');
-  console.log(wrappedResult);
 });
 
 test('wrap multiple modules', (t) => {
@@ -174,5 +173,18 @@ test('wrap multiple modules', (t) => {
   });
   const wrappedResult = require('util');
   const wrappedFS = require('fs');
+  t.end();
+});
+
+test('whitelist a module to not be wrapped', (t) => {
+  t.plan(1)
+  fuxor.clear();
+  fuxor.whitelist('fs');
+  fuxor.wrap((module) => {
+    t.ok(module, 'this should be called' );
+  });
+
+  const unwrappedResult = require('fs');
+  const wrappedResult = require('util');
   t.end();
 });

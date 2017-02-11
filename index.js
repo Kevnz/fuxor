@@ -2,7 +2,8 @@
 const Module = require('module');
 
 const defaultLoad = Module._load;
-const mappings =  new Map();
+const mappings = new Map();
+const whitelist = new Map();
 let wrapper;
 
 Module._load = function(moduleName, module) {
@@ -34,6 +35,7 @@ module.exports = {
   },
   clear: function () {
     mappings.clear();
+    whitelist.clear();
     wrapper = null;
   },
   remove: function (name) {
@@ -42,6 +44,9 @@ module.exports = {
   reset: function () {
     Module._load = defaultLoad;
   },
+  whitelist: function(value) {
+    whitelist.set(value, true);
+  }
   wrap: function(wrapFunction) {
     wrapper = wrapFunction;
   }
