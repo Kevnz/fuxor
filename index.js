@@ -7,7 +7,7 @@ const whitelist = new Map();
 let wrapper;
 
 Module._load = function(moduleName, module) {
-  if (wrapper) {
+  if (wrapper && !whitelist.has(moduleName)) {
     const loadedModule = defaultLoad(moduleName, module);
     return wrapper(loadedModule);
   }
@@ -46,7 +46,7 @@ module.exports = {
   },
   whitelist: function(value) {
     whitelist.set(value, true);
-  }
+  },
   wrap: function(wrapFunction) {
     wrapper = wrapFunction;
   }
