@@ -3,7 +3,7 @@
 
 Very simple DI for node.
 
-```:javascript
+```js
 const fuxor = require('fuxor');
 fuxor.add('fs', {
 	readFileSync: function () {
@@ -16,7 +16,7 @@ console.log(fs.readFileSync('not really', 'anything', { whatever:'you want'}));/
 ```
 ### API
 #### Add
-```:javascript
+```js
 const fuxor = require('fuxor');
 // Add one entry to be overridden 
 fuxor.add('fs', {
@@ -44,21 +44,21 @@ fuxor.add([{ name: 'fs', result: {
 ```
 
 #### Clear
-```:javascript
+```js
 const fuxor = require('fuxor');
 // After items have been added
 fuxor.clear(); // All entries have been removed
 ```
 
 #### remove
-```:javascript
+```js
 const fuxor = require('fuxor');
 // After items have been added
 fuxor.remove('your-module'); // The module has been removed
 ```
 
 #### reset
-```:javascript
+```js
 const fuxor = require('fuxor');
 // After items have been added
 fuxor.reset(); // require now works back to normal
