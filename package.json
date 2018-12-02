@@ -1,11 +1,12 @@
 {
   "name": "fuxor",
-  "version": "2.2.1",
+  "version": "2.2.2",
   "description": "Simple dependency injection by overriding require",
   "main": "index.js",
   "keywords": [
     "di",
     "dependency inject",
+    "dependency injection",
     "ioc",
     "test",
     "testing",
@@ -14,6 +15,7 @@
   ],
   "scripts": {
     "test": "NODE_ENV=test tap ./test/index.js",
+    "fulltest": "nvm-test travis",
     "lint": "eslint"
   },
   "repository": {
@@ -23,10 +25,10 @@
   "author": "Kevin Isom<kevin.isom@gmail.com>",
   "license": "The Unlicense",
   "devDependencies": {
-    "babel-eslint": "^7.1.1",
-    "eslint": "^3.11.0",
-    "eslint-config-airbnb-base": "^10.0.1",
-    "eslint-plugin-import": "^2.2.0",
-    "tap": "^8.0.1"
+    "@kev_nz/eslint-config": "^3.0.1",
+    "eslint": "^5.9.0",
+    "nvm-test": "^2.0.3",
+    "nvm-test-plugin-travis": "^2.0.1",
+    "tap": "^12.1.0"
   }
 }

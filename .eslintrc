@@ -1,9 +1,6 @@
 {
-  "parser": "babel-eslint",
-  "extends": "airbnb-base",
+  "extends": "@kev_nz",
   "rules": {
-    "comma-dangle": [2, "never"],
-    "no-underscore-dangle": [2, "never"],
-    "object-shorthand": [2, "never"]
+    "no-underscore-dangle": "off"
   }
 }
