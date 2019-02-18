@@ -1,10 +1,10 @@
 {
   "name": "fuxor",
-  "version": "2.2.3",
+  "version": "2.2.4",
   "description": "Simple dependency injection by overriding require",
   "main": "index.js",
   "engines": {
-    "node": ">= 4"
+    "node": ">= 6"
   },
   "keywords": [
     "di",
