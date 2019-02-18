@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>fuxor</title>
+  <link rel="stylesheet" type="text/css" href="styles.css" />
+  <meta name="description" content="Simple dependency injection by overriding require" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+
+<body>
+  <div class="container">
+  <h1 id="fuxor">Fuxor</h1>
+<p><a href="https://travis-ci.org/Kevnz/fuxor"><img src="https://travis-ci.org/Kevnz/fuxor.png?branch=master" alt="Build Status" /></a></p>
+<p>Very simple DI for node.</p>
+<pre><code class="js language-js">const fuxor = require('fuxor')
+fuxor.add('fs', {
+    readFileSync: function () {
+        return 'Not really a file'
+    }
+})
+const fs = require('fs')
+console.log(fs.readFileSync('not really', 'anything', { whatever:'you want'}))//'Not really a file'</code></pre>
+<h3 id="api">API</h3>
+<h4 id="add">Add</h4>
+<p>Add what should be returned when the module is required</p>
+<pre><code class="js language-js">const fuxor = require('fuxor')
+// Add one entry to be overridden
+fuxor.add('fs', {
+  readFileSync: function () {
+    return 'Not really a file'
+  }
+})
+// Add one entry to be overridden
+fuxor.add({ name: 'fs', result: {
+  readFileSync: function () {
+    return 'Not really a file'
+  }
+}});
+// Add multiple entries at once
+fuxor.add([{ name: 'fs', result: {
+  readFileSync: function () {
+    return 'Not really a file'
+  }
+}, {
+  name: 'request',
+  result: function () {
+    return 'Not really a file'
+  }
+}])</code></pre>
+<h4 id="clear">Clear</h4>
+<p>Clear all entries</p>
+<pre><code class="js language-js">const fuxor = require('fuxor');
+// After items have been added
+fuxor.clear() // All entries have been removed</code></pre>
+<h4 id="remove">remove</h4>
+<p>Remove individual module to restore the original module</p>
+<pre><code class="js language-js">const fuxor = require('fuxor')
+// After items have been added
+fuxor.remove('your-module') // The module has been removed</code></pre>
+<h4 id="reset">reset</h4>
+<p>Resets all modules back to default</p>
+<pre><code class="js language-js">const fuxor = require('fuxor')
+// After items have been added
+fuxor.reset() // require now works back to normal</code></pre>
+  </div>
+</body>
