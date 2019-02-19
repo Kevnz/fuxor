@@ -1,6 +1,6 @@
 # Fuxor
 
-[![Build Status](https://travis-ci.org/Kevnz/fuxor.png?branch=master)](https://travis-ci.org/Kevnz/fuxor)
+[![Build Status](https://travis-ci.org/Kevnz/fuxor.png?branch=master)](https://travis-ci.org/Kevnz/fuxor) [![npm version](https://badge.fury.io/js/fuxor.svg)](https://badge.fury.io/js/fuxor)
 
 Very simple DI for node.
 
