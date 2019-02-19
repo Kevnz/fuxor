@@ -1,6 +1,6 @@
 {
   "name": "fuxor",
-  "version": "2.2.4",
+  "version": "2.2.5",
   "description": "Simple dependency injection by overriding require",
   "main": "index.js",
   "engines": {
@@ -30,12 +30,11 @@
   "license": "The Unlicense",
   "devDependencies": {
     "@kev_nz/eslint-config": "^3.2.0",
+    "@kev_nz/publisher": "^1.0.1",
     "eslint": "^5.14.1",
     "nvm-test": "^2.0.3",
     "nvm-test-plugin-travis": "^2.0.1",
     "tap": "^12.5.3"
   },
-  "dependencies": {
-    "@kev_nz/publisher": "^1.0.1"
-  }
+  "dependencies": {}
 }
