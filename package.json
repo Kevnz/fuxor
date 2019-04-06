@@ -18,7 +18,7 @@
   ],
   "scripts": {
     "test": "NODE_ENV=test tap ./test/index.js",
-    "fulltest": "nvm-test travis",
+    "coverage": "NODE_ENV=test tap ./test/index.js --cov",
     "lint": "eslint"
   },
   "repository": {
@@ -32,8 +32,6 @@
     "@kev_nz/eslint-config": "^3.2.1",
     "@kev_nz/publisher": "^3.0.1",
     "eslint": "^5.16.0",
-    "nvm-test": "^2.0.3",
-    "nvm-test-plugin-travis": "^2.0.1",
     "tap": "^12.6.1"
   },
   "dependencies": {}
