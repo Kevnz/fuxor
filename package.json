@@ -29,12 +29,12 @@
   "author": "Kevin Isom<kevin.isom@gmail.com>",
   "license": "The Unlicense",
   "devDependencies": {
-    "@kev_nz/eslint-config": "^3.2.0",
-    "@kev_nz/publisher": "^1.0.1",
-    "eslint": "^5.14.1",
+    "@kev_nz/eslint-config": "^3.2.1",
+    "@kev_nz/publisher": "^3.0.1",
+    "eslint": "^5.16.0",
     "nvm-test": "^2.0.3",
     "nvm-test-plugin-travis": "^2.0.1",
-    "tap": "^12.5.3"
+    "tap": "^12.6.1"
   },
   "dependencies": {}
 }
