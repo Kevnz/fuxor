@@ -2,67 +2,84 @@
 <html lang="en">
 
 <head>
-  <title>fuxor</title>
+  <title>fuxor - Simple dependency injection by overriding require - Kevin Isom</title>
   <link rel="stylesheet" type="text/css" href="styles.css" />
+  <link rel="stylesheet" type="text/css" href="extend.css" />
   <meta name="description" content="Simple dependency injection by overriding require" />
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.14.2/styles/github.min.css" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta property="og:title" content="fuxor - Simple dependency injection by overriding require - Kevin Isom" />
+  <meta property="og:type" content="website" />
+  <meta property="og:description" content="fuxor - Simple dependency injection by overriding require" />
+  <meta property="og:url" content="https://kevinisom.info/pxpost" />
+  <meta property="og:image" content="https://avatars3.githubusercontent.com/u/62547?s=400&amp;v=4" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@kev_nz" />
+  <meta name="twitter:title" content="fuxor - Simple dependency injection by overriding require - Kevin Isom" />
+  <meta name="twitter:description" content="fuxor - Simple dependency injection by overriding require" />
+  <meta name="twitter:image" content="https://avatars3.githubusercontent.com/u/62547?s=400&amp;v=4" />
+
 </head>
 
 <body>
   <div class="container">
+
   <h1 id="fuxor">Fuxor</h1>
 <p><a href="https://travis-ci.org/Kevnz/fuxor"><img src="https://travis-ci.org/Kevnz/fuxor.png?branch=master" alt="Build Status" /></a> <a href="https://badge.fury.io/js/fuxor"><img src="https://badge.fury.io/js/fuxor.svg" alt="npm version" /></a></p>
 <p>Very simple DI for node.</p>
-<pre><code class="js language-js">const fuxor = require('fuxor')
-fuxor.add('fs', {
-    readFileSync: function () {
-        return 'Not really a file'
+<pre><code class="hljs js language-js"><span class="hljs-keyword">const</span> fuxor = <span class="hljs-built_in">require</span>(<span class="hljs-string">'fuxor'</span>)
+fuxor.add(<span class="hljs-string">'fs'</span>, {
+    <span class="hljs-attr">readFileSync</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-string">'Not really a file'</span>
     }
 })
-const fs = require('fs')
-console.log(fs.readFileSync('not really', 'anything', { whatever:'you want'}))//'Not really a file'</code></pre>
+<span class="hljs-keyword">const</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">'fs'</span>)
+<span class="hljs-built_in">console</span>.log(fs.readFileSync(<span class="hljs-string">'not really'</span>, <span class="hljs-string">'anything'</span>, { <span class="hljs-attr">whatever</span>:<span class="hljs-string">'you want'</span>}))<span class="hljs-comment">//'Not really a file'</span></code></pre>
 <h3 id="api">API</h3>
 <h4 id="add">Add</h4>
 <p>Add what should be returned when the module is required</p>
-<pre><code class="js language-js">const fuxor = require('fuxor')
-// Add one entry to be overridden
-fuxor.add('fs', {
-  readFileSync: function () {
-    return 'Not really a file'
+<pre><code class="hljs js language-js"><span class="hljs-keyword">const</span> fuxor = <span class="hljs-built_in">require</span>(<span class="hljs-string">'fuxor'</span>)
+<span class="hljs-comment">// Add one entry to be overridden</span>
+fuxor.add(<span class="hljs-string">'fs'</span>, {
+  <span class="hljs-attr">readFileSync</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-string">'Not really a file'</span>
   }
 })
-// Add one entry to be overridden
-fuxor.add({ name: 'fs', result: {
-  readFileSync: function () {
-    return 'Not really a file'
+<span class="hljs-comment">// Add one entry to be overridden</span>
+fuxor.add({ <span class="hljs-attr">name</span>: <span class="hljs-string">'fs'</span>, <span class="hljs-attr">result</span>: {
+  <span class="hljs-attr">readFileSync</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-string">'Not really a file'</span>
   }
 }});
-// Add multiple entries at once
-fuxor.add([{ name: 'fs', result: {
-  readFileSync: function () {
-    return 'Not really a file'
+<span class="hljs-comment">// Add multiple entries at once</span>
+fuxor.add([{ <span class="hljs-attr">name</span>: <span class="hljs-string">'fs'</span>, <span class="hljs-attr">result</span>: {
+  <span class="hljs-attr">readFileSync</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-string">'Not really a file'</span>
   }
 }, {
-  name: 'request',
-  result: function () {
-    return 'Not really a file'
+  <span class="hljs-attr">name</span>: <span class="hljs-string">'request'</span>,
+  <span class="hljs-attr">result</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-string">'Not really a file'</span>
   }
 }])</code></pre>
 <h4 id="clear">Clear</h4>
 <p>Clear all entries</p>
-<pre><code class="js language-js">const fuxor = require('fuxor');
-// After items have been added
-fuxor.clear() // All entries have been removed</code></pre>
+<pre><code class="hljs js language-js"><span class="hljs-keyword">const</span> fuxor = <span class="hljs-built_in">require</span>(<span class="hljs-string">'fuxor'</span>);
+<span class="hljs-comment">// After items have been added</span>
+fuxor.clear() <span class="hljs-comment">// All entries have been removed</span></code></pre>
 <h4 id="remove">remove</h4>
 <p>Remove individual module to restore the original module</p>
-<pre><code class="js language-js">const fuxor = require('fuxor')
-// After items have been added
-fuxor.remove('your-module') // The module has been removed</code></pre>
+<pre><code class="hljs js language-js"><span class="hljs-keyword">const</span> fuxor = <span class="hljs-built_in">require</span>(<span class="hljs-string">'fuxor'</span>)
+<span class="hljs-comment">// After items have been added</span>
+fuxor.remove(<span class="hljs-string">'your-module'</span>) <span class="hljs-comment">// The module has been removed</span></code></pre>
 <h4 id="reset">reset</h4>
 <p>Resets all modules back to default</p>
-<pre><code class="js language-js">const fuxor = require('fuxor')
-// After items have been added
-fuxor.reset() // require now works back to normal</code></pre>
+<pre><code class="hljs js language-js"><span class="hljs-keyword">const</span> fuxor = <span class="hljs-built_in">require</span>(<span class="hljs-string">'fuxor'</span>)
+<span class="hljs-comment">// After items have been added</span>
+fuxor.reset() <span class="hljs-comment">// require now works back to normal</span></code></pre>
   </div>
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-64038939-2"></script>
 <script>
