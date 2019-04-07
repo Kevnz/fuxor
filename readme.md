@@ -1,7 +1,8 @@
 # Fuxor
 
-[![Build Status](https://travis-ci.org/Kevnz/fuxor.png?branch=master)](https://travis-ci.org/Kevnz/fuxor) [![npm version](https://badge.fury.io/js/fuxor.svg)](https://badge.fury.io/js/fuxor)
-
+![Build Status](https://img.shields.io/circleci/project/github/Kevnz/fuxor/master.svg)
+ [![npm version](https://badge.fury.io/js/fuxor.svg)](https://badge.fury.io/js/fuxor)
+[![Coverage Status](https://coveralls.io/repos/github/Kevnz/fuxor/badge.svg?branch=master)](https://coveralls.io/github/Kevnz/fuxor?branch=master)
 Very simple DI for node.
 
 ```js
