@@ -29,8 +29,10 @@
   <div class="container">
 
   <h1 id="fuxor">Fuxor</h1>
-<p><a href="https://travis-ci.org/Kevnz/fuxor"><img src="https://travis-ci.org/Kevnz/fuxor.png?branch=master" alt="Build Status" /></a> <a href="https://badge.fury.io/js/fuxor"><img src="https://badge.fury.io/js/fuxor.svg" alt="npm version" /></a></p>
-<p>Very simple DI for node.</p>
+<p><img src="https://img.shields.io/circleci/project/github/Kevnz/fuxor/master.svg" alt="Build Status" /><br />
+ <a href="https://badge.fury.io/js/fuxor"><img src="https://badge.fury.io/js/fuxor.svg" alt="npm version" /></a><br />
+<a href="https://coveralls.io/github/Kevnz/fuxor?branch=master"><img src="https://coveralls.io/repos/github/Kevnz/fuxor/badge.svg?branch=master" alt="Coverage Status" /></a><br />
+Very simple DI for node.</p>
 <pre><code class="hljs js language-js"><span class="hljs-keyword">const</span> fuxor = <span class="hljs-built_in">require</span>(<span class="hljs-string">'fuxor'</span>)
 fuxor.add(<span class="hljs-string">'fs'</span>, {
     <span class="hljs-attr">readFileSync</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
