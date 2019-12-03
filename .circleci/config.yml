@@ -1,8 +1,8 @@
 version: 2
 jobs:
-  "node-11":
+  "node-13":
     docker:
-      - image: circleci/node:11.9
+      - image: circleci/node:13
     working_directory: ~/fuxor
     steps:
       - checkout
@@ -11,6 +11,23 @@ jobs:
       # run tests!
       - run: npm test
       - run: npm run coverage
+      - run: npm run report
+      - store_test_results:
+          path: ~/fuxor/reports
+  "node-12":
+    docker:
+      - image: circleci/node:12
+    working_directory: ~/fuxor
+    steps:
+      - checkout
+
+      - run: npm install
+      # run tests!
+      - run: npm test
+      - run: npm run coverage
+      - run: npm run report
+      - store_test_results:
+          path: ~/fuxor/reports
 
   "node-10":
     docker:
@@ -22,6 +39,9 @@ jobs:
       - run: npm install
       # run tests!
       - run: npm test
+      - run: npm run report
+      - store_test_results:
+          path: ~/fuxor/reports
 
   "node-8":
     docker:
@@ -33,23 +53,15 @@ jobs:
       - run: npm install
       # run tests!
       - run: npm test
-
-  "node-6":
-    docker:
-      - image: circleci/node:6
-    working_directory: ~/fuxor
-    steps:
-      - checkout
-
-      - run: npm install
-      # run tests!
-      - run: npm test
+      - run: npm run report
+      - store_test_results:
+          path: ~/fuxor/reports
 
 workflows:
   version: 2
   build:
     jobs:
-      - "node-11"
+      - "node-13"
+      - "node-12"
       - "node-10"
       - "node-8"
-      - "node-6"
