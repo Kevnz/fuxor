@@ -79,10 +79,24 @@ fuxor.clear() <span class="hljs-comment">// All entries have been removed</span>
 <span class="hljs-comment">// After items have been added</span>
 fuxor.remove(<span class="hljs-string">'your-module'</span>) <span class="hljs-comment">// The module has been removed</span></code></pre>
 <h4 id="reset">reset</h4>
-<p>Resets all modules back to default</p>
+<p>Resets back to default require behavior</p>
 <pre><code class="hljs js language-js"><span class="hljs-keyword">const</span> fuxor = <span class="hljs-built_in">require</span>(<span class="hljs-string">'fuxor'</span>)
 <span class="hljs-comment">// After items have been added</span>
 fuxor.reset() <span class="hljs-comment">// require now works back to normal</span></code></pre>
+<h4 id="org">org</h4>
+<p>Load a directory structure as an org</p>
+<pre><code class="hljs js language-js"><span class="hljs-keyword">const</span> fuxor = <span class="hljs-built_in">require</span>(<span class="hljs-string">'fuxor'</span>)
+<span class="hljs-comment">// given a directory named modules fuxor loads subdirectories</span>
+<span class="hljs-comment">// respects the package.json in each directory</span>
+<span class="hljs-comment">// - modules</span>
+<span class="hljs-comment">// -- myModule</span>
+<span class="hljs-comment">// -- myOtherModule</span>
+fuxor.init({
+  <span class="hljs-attr">name</span>: <span class="hljs-string">'@fuxor'</span>,
+  <span class="hljs-attr">path</span>: path.join(__dirname, <span class="hljs-string">'./modules'</span>),
+})
+<span class="hljs-keyword">const</span> myModule = <span class="hljs-built_in">require</span>(<span class="hljs-string">'@fuxor/myModule'</span>)
+<span class="hljs-keyword">const</span> myOtherModule = <span class="hljs-built_in">require</span>(<span class="hljs-string">'@fuxor/myOtherModule'</span>)</code></pre>
   </div>
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-64038939-2"></script>
 <script>
