@@ -12,7 +12,7 @@ test('Requiring overrides', function(t) {
       test: function(result) {
         t.ok(result, 'this should be called')
         t.end()
-      },,
+      },
     },
   })
   const fs2 = require('fs')
@@ -38,7 +38,7 @@ test('Requiring overrides multiple times', function(t) {
       test: function(result) {
         t.ok(result, 'this should be called as well')
         t.end()
-      },,
+      },
     },
   })
   const fs2 = require('fs')
@@ -54,7 +54,7 @@ test('Removing a module', function(t) {
     result: {
       mockFunction: function(result) {
         t.ok(result, 'this should be called')
-      },,
+      },
     },
   })
   const fsMock = require('fs')
@@ -72,7 +72,7 @@ test('Clearing all modules', function(t) {
     result: {
       mockFunction: function(result) {
         t.ok(result, 'this should be called')
-      },,
+      },
     },
   })
   fuxor.add({
@@ -80,7 +80,7 @@ test('Clearing all modules', function(t) {
     result: {
       mockedFunction: function(result) {
         t.ok(result, 'this should be called')
-      },,
+      },
     },
   })
   const fsMock = require('fs')
@@ -102,7 +102,7 @@ test('Only override modules that have been loaded', function(t) {
     result: {
       mockFunction: function(result) {
         t.ok(result, 'this should be called')
-      },,
+      },
     },
   })
   const fs = require('fs')
@@ -119,7 +119,7 @@ test('Override local modules as well', function(t) {
       mockFunction: function() {
         t.ok(true, 'this should be called')
         t.end()
-      },,
+      },
     },
   })
   const filemock = require('./mock')
@@ -133,7 +133,7 @@ test('Local module not added should be called', function(t) {
     result: {
       mockFunction: function() {
         t.ok(true, 'this should be called')
-      },,
+      },
     },
   })
   const nomock = require('./no-mock')
@@ -165,15 +165,15 @@ test('Adding multiple overrides in one add', function(t) {
       result: {
         test: function(result) {
           t.ok(result, 'this should be called')
-        },,
+        },
       },
     },
     {
       name: 'nothing',
       result: function(result) {
         t.ok(result, 'this should be called')
-      },,
-    },,
+      },
+    },
   ])
   const fs = require('fs')
   const nothing = require('nothing')
