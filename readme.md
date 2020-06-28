@@ -72,11 +72,30 @@ fuxor.remove('your-module') // The module has been removed
 
 #### reset
 
-Resets all modules back to default
+Resets back to default require behavior
 
 ```js
 const fuxor = require('fuxor')
 // After items have been added
 fuxor.reset() // require now works back to normal
+```
+
+#### org
+
+Load a directory structure as an org
+
+```js
+const fuxor = require('fuxor')
+// given a directory named modules fuxor loads subdirectories
+// respects the package.json in each directory
+// - modules
+// -- myModule
+// -- myOtherModule
+fuxor.init({
+  name: '@fuxor',
+  path: path.join(__dirname, './modules'),
+})
+const myModule = require('@fuxor/myModule')
+const myOtherModule = require('@fuxor/myOtherModule')
 ```
 
