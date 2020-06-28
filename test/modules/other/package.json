@@ -1,0 +1,22 @@
+{
+  "name": "@fuxor/other",
+  "version": "2.2.6",
+  "description": "Simple dependency injection by overriding require",
+  "main": "src/index.js",
+  "engines": {
+    "node": ">= 6"
+  },
+  "keywords": [
+    "di",
+    "dependency inject",
+    "dependency injection",
+    "ioc",
+    "test",
+    "testing",
+    "mocking",
+    "overloading"
+  ],
+  "license": "The Unlicense",
+  "devDependencies": {},
+  "dependencies": {}
+}
