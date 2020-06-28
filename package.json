@@ -24,7 +24,7 @@
     "lint": "eslint",
     "docs": "publisher",
     "postpublish": "git push origin --all --follow-tags && npm run docs",
-    "preversion": "npm run eslint && npm run test",
+    "preversion": "npm run lint && npm run test",
     "postversion": "npm publish"
   },
   "repository": {
