@@ -18,6 +18,7 @@
   ],
   "scripts": {
     "test": "NODE_ENV=test tap ./test/index.js",
+    "test:dev": "NODE_ENV=test tap ./test/dev.js",
     "report": "NODE_ENV=test node ./test/index.js | tap-xunit > ./reports/report.xml",
     "coverage": "NODE_ENV=test tap ./test/index.js --cov",
     "lint": "eslint"
