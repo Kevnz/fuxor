@@ -1,11 +1,13 @@
 'use strict'
 const Module = require('module')
-
+const fs = require('fs')
+const path = require('path')
 const defaultLoad = Module._load
 const mappings = new Map()
 let wrapper
+const loadedOrgs = new Map()
 
-Module._load = function(moduleName, module) {
+const fuxorLoad = function(moduleName, module) {
   if (wrapper) {
     const loadedModule = defaultLoad(moduleName, module)
     return wrapper(loadedModule)
@@ -16,12 +18,14 @@ Module._load = function(moduleName, module) {
     const filePath = path.resolve(process.cwd(), parsedPath.dir, moduleName)
     return defaultLoad(filePath)
   }
-  if (mappings.has(moduleName)) {
+  if (!mappings.has(moduleName) && loadedOrgs.has(moduleName)) {
+    return defaultLoad(loadedOrgs.get(moduleName))
+  } else if (mappings.has(moduleName)) {
     return mappings.get(moduleName)
   }
   return defaultLoad(moduleName, module)
 }
-
+Module._load = fuxorLoad
 module.exports = {
   add: function(mapping, result) {
     if (Array.isArray(mapping)) {
@@ -36,6 +40,11 @@ module.exports = {
     mappings.clear()
     wrapper = null
   },
+  init: function() {
+    mappings.clear()
+    wrapper = null
+    Module._load = fuxorLoad
+  },
   remove: function(name) {
     mappings.delete(name)
   },
@@ -44,5 +53,11 @@ module.exports = {
   },
   wrap: function(wrapFunction) {
     wrapper = wrapFunction
+  },
+  org: function(opts) {
+    const modsToLoad = fs.readdirSync(opts.path)
+    modsToLoad.forEach(dir => {
+      loadedOrgs.set(`${opts.name}/${dir}`, path.join(opts.path, dir))
+    })
   },
 }
