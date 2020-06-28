@@ -30,10 +30,10 @@
   "author": "Kevin Isom<kevin.isom@gmail.com>",
   "license": "The Unlicense",
   "devDependencies": {
-    "@kev_nz/eslint-config": "^5.1.0",
+    "@kev_nz/eslint-config": "^5.2.2",
     "@kev_nz/publisher": "^4.0.1",
-    "eslint": "^6.7.2",
-    "tap": "^14.10.2",
+    "eslint": "^7.3.1",
+    "tap": "^14.10.7",
     "tap-xunit": "^2.4.1"
   },
   "dependencies": {}
