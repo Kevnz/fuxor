@@ -1,3 +1,4 @@
+const path = require('path')
 const test = require('tap').test
 
 const fuxor = require('../index')
@@ -93,6 +94,38 @@ test('Clearing all modules', function(t) {
   t.ok(realFs.mockFunction === undefined)
   t.ok(realUtil.mockedFunction === undefined)
   t.end()
+})
+
+test('Reset to require', function(t) {
+  fuxor.clear()
+  fuxor.add({
+    name: 'fs',
+    result: {
+      mockFunction: function(result) {
+        t.ok(result, 'this should be called')
+      },
+    },
+  })
+  fuxor.add({
+    name: 'util',
+    result: {
+      mockedFunction: function(result) {
+        t.ok(result, 'this should be called')
+      },
+    },
+  })
+  const fsMock = require('fs')
+  fsMock.mockFunction(true)
+  const utilMock = require('util')
+  utilMock.mockedFunction(true)
+  fuxor.reset()
+  const realFs = require('fs')
+  const realUtil = require('util')
+  t.ok(realFs.mockFunction === undefined)
+  t.ok(realUtil.mockedFunction === undefined)
+  t.end()
+  fuxor.init()
+  fuxor.clear()
 })
 
 test('Only override modules that have been loaded', function(t) {
@@ -201,4 +234,50 @@ test('wrap multiple modules', t => {
   const wrappedResult = require('util')
   const wrappedFS = require('fs')
   t.end()
+})
+
+test('Fuxor init loads org modules', function(t) {
+  fuxor.clear()
+  fuxor.org({
+    name: '@fuxor',
+    path: path.join(__dirname, './modules'),
+  })
+  const sample = require('@fuxor/sample')
+  t.equal(sample(), true, 'should be the same')
+  t.end()
+})
+
+test('Fuxor init loads org modules and respect the package.json file', function(t) {
+  fuxor.clear()
+  fuxor.org({
+    name: '@fuxor',
+    path: path.join(__dirname, './modules'),
+  })
+  const sample = require('@fuxor/sample')
+  const other = require('@fuxor/other')
+  const filed = require('@fuxor/filed')
+  t.equal(sample(), true, 'should be the same')
+  t.equal(other(), true, 'should be the same')
+  t.equal(filed(), true, 'should be the same')
+  t.end()
+})
+
+test('Fuxor init loads org modules but overload one', function(t) {
+  fuxor.clear()
+  fuxor.org({
+    name: '@fuxor',
+    path: path.join(__dirname, './modules'),
+  })
+  fuxor.add('@fuxor/other', {
+    test: function(result) {
+      t.equal(true, result, 'this should be called')
+      t.end()
+    },
+  })
+  const sample = require('@fuxor/sample')
+  const other = require('@fuxor/other')
+
+  t.equal(sample(), true, 'should be the same')
+  console.log('other', other)
+  other.test(true)
 })

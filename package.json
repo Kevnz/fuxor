@@ -18,9 +18,14 @@
   ],
   "scripts": {
     "test": "NODE_ENV=test tap ./test/index.js",
+    "watch": "NODE_ENV=test tap ./test/index.js -w",
     "report": "NODE_ENV=test node ./test/index.js | tap-xunit > ./reports/report.xml",
     "coverage": "NODE_ENV=test tap ./test/index.js --cov",
-    "lint": "eslint"
+    "lint": "eslint",
+    "docs": "publisher",
+    "postpublish": "git push origin --all --follow-tags && npm run docs",
+    "preversion": "npm run eslint && npm run test",
+    "postversion": "npm publish"
   },
   "repository": {
     "type": "git",

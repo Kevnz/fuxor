@@ -3,3 +3,4 @@ node_modules
 dist
 report.xml
 .nyc_output
+.DS_Store
